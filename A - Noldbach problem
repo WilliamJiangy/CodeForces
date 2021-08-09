@@ -1,0 +1,59 @@
+// @Author: WilliamJiangy
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+using ull = unsigned long long;
+ 
+#define all(x) (x).begin(), (x).end()
+#define sz(x) ((int)(x).size())
+#define bug() cout << "######PLEASE_NO_BUG######"
+ 
+void solve() {
+	const int nxM = 1e3 + 7;
+	bitset<nxM> prime;
+	prime.set();
+	prime[0] = 0;
+	prime[1] = 0;
+	for(int i = 2; i < sqrt(nxM - 6); i++) {
+		if(prime[i]) {
+			for(int j = i * i; j < nxM - 6; j += i) {
+				prime[j] = 0;
+			}
+		}
+	}
+	vector<int> opr;
+	opr.push_back(2);
+	for(int i = 3; i < nxM - 6; i += 2) {
+		if(prime[i]) opr.push_back(i);
+	}
+	set<int> s;
+	vector<int> spr;
+	for(int i = 0; i < sz(opr) - 1; i++) {
+		s.insert(opr[i] + opr[i + 1]);
+	}
+	for(int i : s) spr.push_back(i);
+	int cnt = 0;
+	int n, k;
+	cin >> n >> k;
+	for(int i = 2; i <= n; i++) {
+		if(!prime[i]) continue;
+		for(int j = 0; j < sz(spr) && spr[j] <= i; j++) {
+			if(i - spr[j] == 1) {
+				cnt++;
+				break;
+			}
+		}
+	}
+	if(cnt >= k) puts("YES");
+	else puts("NO");
+}
+ 
+int main() {
+	ios_base::sync_with_stdio(false);
+	cin.tie(nullptr);
+	#ifndef ONLINE_JUDGE
+	freopen("kext.inp", "r", stdin);
+	#endif
+	solve();
+	return 0;
+}

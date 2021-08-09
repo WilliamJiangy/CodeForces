@@ -1,0 +1,41 @@
+// @Author: WilliamJiangy
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+using ull = unsigned long long;
+ 
+#define all(x) (x).begin(), (x).end()
+#define sz(x) ((int)(x).size())
+#define bug() cout << "######PLEASE_NO_BUG######"
+const int maxx = 1e5 + 7;
+bitset<maxx + 7> prime;
+ 
+void solve() {
+	prime[0] = true;
+	prime[1] = true;
+	for(int i = 2; i < sqrt(maxx); i++) {
+		if(!prime[i]) {
+			for(int j = i * i; j < maxx; j += i) {
+				prime[j] = true;
+			}
+		}
+	}
+	int n;
+	cin >> n;
+	if(n == 1 || n == 2) cout << "1\n";
+	else cout << "2\n";
+	for(int i = 1; i <= n; i++) {
+		if(!prime[i + 1]) cout << "1 ";
+		else cout << "2 ";
+	}
+}
+ 
+int main() {
+	ios_base::sync_with_stdio(false);
+	cin.tie(nullptr);
+	#ifndef ONLINE_JUDGE
+	freopen("kext.inp", "r", stdin);
+	#endif
+	solve();
+	return 0;
+} 

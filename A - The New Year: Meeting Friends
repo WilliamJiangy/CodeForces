@@ -1,0 +1,28 @@
+// @Author: WilliamJiangy
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+using ull = unsigned long long;
+ 
+#define all(x) (x).begin(), (x).end()
+#define sz(x) ((int)(x).size())
+#define array ar
+ 
+void solve() {
+	int a, b, c;
+	cin >> a >> b >> c;
+	int ans = 1e9 + 7;
+	for(int i = 1; i <= 100; i++) {
+		int res = abs(i - a) + abs(i - b) + abs(i - c);
+		ans = min(ans, res);
+	}
+	cout << ans << "\n";
+}
+ 
+int main() {
+	ios_base::sync_with_stdio(false);
+	cin.tie(nullptr);
+// 	freopen("kext.inp", "r", stdin);
+	solve();
+	return 0;
+}

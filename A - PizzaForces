@@ -1,0 +1,32 @@
+// @Author: WilliamJiangy
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+using ull = unsigned long long;
+ 
+#define all(x) (x).begin(), (x).end()
+#define sz(x) ((int)(x).size())
+#define array ar
+ 
+void solve() {
+	int tc;
+	cin >> tc;
+	while(tc--) {
+		ll n;
+		cin >> n;
+		while(n < 6 || n & 1) {
+			n++;
+		}
+		cout << n / 2 * 5 << "\n";
+	}
+}
+ 
+int main() {
+	ios_base::sync_with_stdio(false);
+	cin.tie(nullptr);
+	#ifndef ONLINE_JUDGE
+	freopen("kext.inp", "r", stdin);
+	#endif
+	solve();
+	return 0;
+}
